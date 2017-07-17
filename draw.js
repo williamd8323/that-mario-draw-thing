@@ -1,27 +1,34 @@
+var scale = Math.random()*55;
+
 function setup(){
 	createCanvas(1000,1000);
     background(Math.random()*225, Math.random()*225, Math.random()*225);
 }
 
 function drawRect(){
+    scale = Math.random()*55;
     fill(Math.random()*225, Math.random()*225, Math.random()*225);
-    rect(mouseX, mouseY, 55, 55);
+    rect(mouseX, mouseY, scale, scale);
 }
 
 function drawTri(){
+    scale = Math.random()*55;
     fill(Math.random()*225, Math.random()*225, Math.random()*225);
-    triangle(mouseX, mouseY, (mouseX+27.5), mouseY-55, mouseX+55, mouseY);
+    triangle(mouseX, mouseY, (mouseX+scale/2), mouseY-scale, mouseX+scale, mouseY);
 }
 
 function drawEllipse(){
+    scale = Math.random()*55;
     fill(Math.random()*225, Math.random()*225, Math.random()*225);
-    ellipse(mouseX, mouseY, 55, 55);
+    ellipse(mouseX, mouseY, scale, scale);
 }
 
 var arr = [drawRect(), drawTri(), drawEllipse()];
 
 
 function mouseDragged() {
+    scale = Math.random()*55;
+//background(Math.random()*225, Math.random()*225, Math.random()*225);
 var rand = Math.floor(Math.random()*3);
 if(rand==0){
     drawRect();
@@ -35,4 +42,24 @@ else{
   
 }
 
-mouseDragged();
+function drawRandomShapes(){
+    mouseDragged();
+}
+
+function drawTriOnly(){
+    function mouseDragged(){
+        drawTri();
+    }
+}
+
+function drawRectOnly(){
+    function mouseDragged(){
+        drawRect();
+    }
+}
+
+function drawEllipseOnly(){
+    function mouseDragged(){
+        drawEllipse();
+    }
+}
